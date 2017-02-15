@@ -1,15 +1,14 @@
 {
-  "name": "shower",
-  "description": "Shower HTML presentation engine",
+  "name": "oauth-webbylab-presentation",
+  "description": "OAuth and why you should to use it",
   "version": "2.1.9",
   "author": {
-    "name": "Vadim Makeev",
-    "url": "http://pepelsbey.net/"
+    "name": "Sergey Podgornyy"
   },
   "homepage": "https://github.com/shower/shower",
   "repository": {
     "type": "git",
-    "url": "git://github.com/shower/shower.git"
+    "url": "https://github.com/SergeyPodgornyy/oauth-webbylab-presentation.git"
   },
   "bugs": {
     "url": "http://github.com/shower/shower/issues"
