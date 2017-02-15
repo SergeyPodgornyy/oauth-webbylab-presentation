@@ -1,0 +1,595 @@
+/*******************************************************************************
+    BASIC STYLES
+*******************************************************************************/
+
+.slide::after{
+    background:url(../images/ribbon.svg) no-repeat;
+}
+.slide h2 {
+    margin-top: -50px;
+}
+.slide h3 {
+    color: #585a5e;
+    font: 700 40px/1 PT Sans Narrow,sans-serif;
+}
+.slide h4 {
+    color: #585a5e;
+    font: 700 25px/1 PT Sans Narrow,sans-serif;
+}
+
+/*******************************************************************************
+    TITLE (COVER) PAGE
+*******************************************************************************/
+
+#cover h2 {
+    margin:30px 0 0;
+    color:#FFF;
+    text-align:center;
+    font-size:70px;
+}
+#cover p {
+    margin:10px 0 0;
+    text-align:center;
+    color:#FFF;
+    font-style:italic;
+    font-size:20px;
+}
+#cover p a {
+    color:#FFF;
+}
+#cover img#oauth-logo {
+    width: 200px;
+    display: block;
+    margin: 50px auto 0;
+}
+
+/*******************************************************************************
+    ABOUT PAGE
+*******************************************************************************/
+
+#about h3,
+#about h4 {
+    margin: 20px auto;
+    text-align: center;
+}
+#about #webbylab-logo {
+    height: 90px;
+    margin: 0 auto;
+    display: block;
+}
+#about div.badges-block {
+    margin-top: 110px;
+    text-align: center;
+}
+#about img.badge-logo {
+    width: 80px;
+    margin: 15px;
+}
+
+/*******************************************************************************
+    INTRO PAGE
+*******************************************************************************/
+
+#intro img {
+    width: 250px;
+}
+
+/*******************************************************************************
+    IS SECURE PAGE
+*******************************************************************************/
+
+#is-secure img {
+    display: block;
+    width: 250px;
+}
+
+/*******************************************************************************
+    TIME WENT PAGE
+*******************************************************************************/
+
+#however img {
+    width: 100%;
+    margin-top: 10%;
+}
+
+/*******************************************************************************
+    INTRO OAUTH PAGE
+*******************************************************************************/
+
+#intro-oauth {
+    background: radial-gradient(circle, rgba(255, 255, 255, .5), rgba(255, 255, 255, .9)),
+                url('../pictures/cover/dev_oauth_badge.png') 50% 50% no-repeat,
+                white;
+}
+
+#intro-oauth p {
+    text-align: center;
+    margin-top: 15%;
+    font: 35px/2 "PT Sans",sans-serif;
+}
+
+/*******************************************************************************
+    ROLES PAGE
+*******************************************************************************/
+
+#roles li::before {
+    content: none;
+}
+
+#roles li>img {
+    display: inline-block;
+    margin-left: 50px;
+    max-width: 100px;
+}
+
+#roles li>div {
+    display: inline-block;
+    width: 80%;
+    float: right;
+}
+
+#roles li>div>h4 {
+    margin-left: 50px;
+}
+
+#roles li>div>h4,
+#roles li>div>p {
+    display: inline;
+}
+
+/*******************************************************************************
+    PROTOCOL FLOW PAGE
+*******************************************************************************/
+
+.protocol-flow div.flow-wrapper {
+    position: relative;
+    height: 80%;
+}
+.protocol-flow img {
+    max-width: 150px;
+    position: absolute;
+}
+.protocol-flow img.user {
+    top: 0;
+    left: 0;
+}
+.protocol-flow img.auth-server {
+    top: 0;
+    right: 0;
+}
+.protocol-flow img.client {
+    bottom: 0;
+    left: 0;
+}
+.protocol-flow img.server {
+    bottom: 0;
+    right: 0;
+}
+.protocol-flow p.talk {
+    position: absolute;
+    color: #333;
+    font: 25px/1.5 'PT Sans',sans-serif;
+}
+
+#protocol-flow-1 div {
+    background: url('../pictures/protocol-frow/arrow_down.png') 8% 61% no-repeat;
+    background-size: 35px
+}
+#protocol-flow-2 div,
+#protocol-flow-9 div {
+    background: url('../pictures/protocol-frow/arrow_right.png') 50% 95% no-repeat;
+    background-size: 450px 100px;
+}
+#protocol-flow-3 div,
+#protocol-flow-12 div {
+    background: url('../pictures/protocol-frow/arrow_left.png') 50% 95% no-repeat;
+    background-size: 450px 100px;
+}
+
+#protocol-flow-4 div {
+    background: url('../pictures/protocol-frow/arrow_right_up.png') 50% 50% no-repeat;
+    background-size: 550px 150px;
+}
+#protocol-flow-5 div,
+#protocol-flow-8 div {
+    background: url('../pictures/protocol-frow/arrow_left_down.png') 50% 50% no-repeat;
+    background-size: 550px 150px;
+}
+
+#protocol-flow-6 div {
+    background: url('../pictures/protocol-frow/arrow_left.png') 50% 15% no-repeat;
+    background-size: 450px 100px;
+}
+#protocol-flow-7 div {
+    background: url('../pictures/protocol-frow/arrow_right.png') 50% 15% no-repeat;
+    background-size: 450px 100px;
+}
+#protocol-flow-10 div {
+    background: url('../pictures/protocol-frow/arrow_up.png') 92% 40% no-repeat;
+    background-size: 35px
+}
+#protocol-flow-11 div {
+    background: url('../pictures/protocol-frow/arrow_down.png') 92% 60% no-repeat;
+    background-size: 35px
+}
+#protocol-flow-13 div {
+    background: url('../pictures/protocol-frow/arrow_up.png') 8% 42% no-repeat;
+    background-size: 35px
+}
+
+/*******************************************************************************
+    DELEGATION PAGE
+*******************************************************************************/
+
+#delegation div.description {
+    margin: 50px auto;
+    width: 90%;
+    text-align: center;
+    font: 35px/1.7 "PT Sans",sans-serif;
+}
+#delegation img {
+    width: 250px;
+}
+#delegation mark.client {
+    background: #faaca2;
+}
+#delegation mark.owner {
+    background: #a2b7fa;
+}
+#delegation div.images img.client {
+    padding: 15px;
+    border: 5px solid #faaca2;
+    border-radius: 5%;
+}
+#delegation div.images img.owner {
+    padding: 15px;
+    float: right;
+    border: 5px solid #a2b7fa;
+    border-radius: 5%;
+}
+#delegation img.lol {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+/*******************************************************************************
+    GRANTS PAGE
+*******************************************************************************/
+
+#grants li {
+    margin: 25px 0;
+}
+#grants li,
+#grants h4 {
+    font-size: 30px;
+}
+#grants h4 {
+    display: inline;
+}
+
+/*******************************************************************************
+    AUTHORIZATION CODE / IMPLICIT / PASSWORD CREDENTIALS / CLIENT / REFRESH PAGE
+*******************************************************************************/
+
+#auth-code blockquote {
+    margin-top: 10%;
+}
+
+#auth-code-request code span,
+#auth-code-server-request code span,
+#implicit-request code span,
+#password-credentials-request code span,
+#client-credentials-request code span,
+#refresh-request code span {
+    font-weight: bold;
+}
+#auth-code-request code span.rt,
+#auth-code-server-request code span.gt,
+#password-credentials-request code span.gt,
+#client-credentials-request code span.gt,
+#refresh-request code span.gt,
+#implicit-request code span.rt {
+    color: #dc6151;
+}
+#password-credentials-request code span.un,
+#password-credentials-request code span.pw,
+#refresh-request code span.rt {
+    color: #5193dc;
+}
+#auth-code-request code span.ci,
+#auth-code-server-request code span.ci,
+#password-credentials-request code span.ci,
+#client-credentials-request code span.ci,
+#refresh-request code span.ci,
+#implicit-request code span.ci {
+    color: #1f3f60;
+}
+#auth-code-request code span.ru,
+#auth-code-server-request code span.ru,
+#password-credentials-request code span.ru,
+#implicit-request code span.ru {
+    color: #19750a;
+}
+#auth-code-request code span.s,
+#auth-code-server-request code span.c,
+#password-credentials-request code span.s,
+#client-credentials-request code span.s,
+#refresh-request code span.s,
+#implicit-request code span.s {
+    color: #660a75;
+}
+#auth-code-request code span.st,
+#auth-code-server-request code span.cs,
+#password-credentials-request code span.cs,
+#client-credentials-request code span.cs,
+#refresh-request code span.cs,
+#implicit-request code span.st {
+    color: #c17c21;
+}
+
+#implicit-request pre {
+    margin: -25px 0;
+}
+#client-credentials-request pre {
+    margin: -50px 0;
+}
+#refresh-request pre {
+    margin: -70px 0 -50px;
+}
+#password-credentials-request pre {
+    margin: -75px 0;
+}
+
+#auth-code-request figure,
+#auth-code-server-request figure {
+    margin-top: -50px;
+}
+#password-credentials figure,
+#password-credentials-request figure {
+    margin-top: 50px;
+}
+#refresh-request figure {
+    margin-top: 25px;
+}
+#client-credentials figure {
+    margin-top: 100px;
+}
+
+#auth-code-server-request p.additions,
+#client-credentials-request p.additions {
+    margin-bottom: -50px;
+}
+
+#auth-code-responce span.keys,
+#password-credentials-responce span.keys,
+#client-credentials-responce span.keys,
+#refresh-responce span.keys {
+    color: #d20000;
+}
+#auth-code-responce span.values,
+#password-credentials-responce span.values,
+#client-credentials-responce span.values,
+#refresh-responce span.values {
+    color: #33598c;
+}
+#auth-code-responce span.integers,
+#password-credentials-responce span.integers,
+#client-credentials-responce span.integers,
+#refresh-responce span.integers {
+    color: #7e2bb9;
+}
+#auth-code-responce .brackets,
+#password-credentials-responce .brackets,
+#client-credentials-responce .brackets,
+#refresh-responce .brackets {
+    color: #46ad62;
+}
+
+/*******************************************************************************
+    EXPIRATION PAGE
+*******************************************************************************/
+
+#expiration .next h3 {
+    display: inline;
+}
+#expiration .next img {
+    width: 25%;
+}
+
+/*******************************************************************************
+    FE TIPS PAGE
+*******************************************************************************/
+
+#fe-tips ul {
+    margin-top: 75px;
+    font-size: 35px;
+}
+#fe-tips img {
+    width: 50%;
+    float: right;
+    margin-top: -75px;
+}
+
+/*******************************************************************************
+    JWT INTRO PAGE
+*******************************************************************************/
+
+#jwt-intro {
+    background: radial-gradient(circle, rgba(255, 255, 255, .5), rgba(255, 255, 255, .9)),
+                url('../pictures/jwt/jwt_logo.png') 50% 50% no-repeat,
+                white;
+}
+
+#jwt-intro > p {
+    text-align: center;
+    margin-top: 5%;
+    font: 30px/2 "PT Sans",sans-serif;
+}
+
+/*******************************************************************************
+    WHEN JWT PAGE
+*******************************************************************************/
+
+#jwt-when pre {
+    margin: -50px 0;
+}
+
+#jwt-when pre.json {
+    margin-top: 100px;
+}
+#jwt-when pre.json code {
+    margin-top: -5px;
+}
+
+#jwt-when span.keys {
+    color: #d20000;
+}
+#jwt-when span.values {
+    color: #33598c;
+}
+#jwt-when span.integers {
+    color: #7e2bb9;
+}
+#jwt-when .brackets {
+    color: #46ad62;
+}
+
+/*******************************************************************************
+    JWT LOOKS LIKE PAGE
+*******************************************************************************/
+
+#jwt-look pre {
+    margin: -50px 0;
+}
+#jwt-look pre code span {
+    font-weight: bold;
+}
+#jwt-look span.header {
+    color: #19750a;
+}
+#jwt-look span.claims {
+    color: #c17c21;
+}
+#jwt-look span.signature {
+    color: #1f3f60;
+}
+#jwt-look p.description {
+    text-align: center;
+    margin-top: 25px;
+}
+#jwt-look p.description span {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0 50px;
+}
+
+/*******************************************************************************
+    JWT PAGEs
+*******************************************************************************/
+
+#jwt-header code span,
+#jwt-claims code span,
+#jwt-signature code span {
+    font-weight: bold;
+}
+#jwt-header span.keys,
+#jwt-claims span.keys,
+#jwt-signature span.keys,
+#jwt-responce span.keys {
+    color: #d20000;
+}
+#jwt-header span.values,
+#jwt-claims span.values,
+#jwt-signature span.values,
+#jwt-responce span.values {
+    color: #33598c;
+}
+#jwt-header span.integers,
+#jwt-claims span.integers,
+#jwt-signature span.integers,
+#jwt-responce span.integers {
+    color: #7e2bb9;
+}
+#jwt-header .brackets,
+#jwt-claims .brackets,
+#jwt-signature .brackets,
+#jwt-responce .brackets {
+    color: #46ad62;
+}
+
+#jwt-claims pre code {
+    margin-top: -16px;
+}
+#jwt-responce pre code {
+    line-height: 1.4;
+}
+
+#jwt-signature code {
+    color: #1f3f60;
+}
+#jwt-signature code .header {
+    color: #c17c21;
+}
+#jwt-signature code .payload {
+    color: #19750a;
+}
+
+/*******************************************************************************
+    JWA PAGE
+*******************************************************************************/
+
+#jwa pre code {
+    font: 15px/1 monospace;
+    text-align: center;
+    box-sizing: content-box;
+    max-width: 100%;
+}
+
+#jwa img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/*******************************************************************************
+    DEMO PAGE
+*******************************************************************************/
+
+#demo .shout {
+    top: 30%;
+}
+#demo img {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+/*******************************************************************************
+    SEE MORE PAGE
+*******************************************************************************/
+
+#see-more h2 {
+    font-size:100px
+}
+
+/*******************************************************************************
+    Question and Answers PAGE
+*******************************************************************************/
+
+#qa .content {
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -70%);
+}
+#qa h3 {
+    font: 700 60px/1 PT Sans Narrow,sans-serif;
+    text-align: center;
+    margin: 20px 0;
+    color: #fff;
+}

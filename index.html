@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OAuth and why you should to use it?</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+    <link rel="stylesheet" href="styles/custom.css">
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>OAuth and why you should to use it?</h1>
+        <p>
+            <a href="https://www.linkedin.com/in/sergey-podgornyy-5ab63385/">
+                Sergey Podgornyy
+            </a> | WebbyLab
+        </p>
+    </header>
+    <section class="slide" id="cover">
+        <h2>OAuth and why you should to use it?</h2>
+        <p>Peresented to you by
+            <a href="https://www.linkedin.com/in/sergey-podgornyy-5ab63385/">
+                Sergey Podgornyy
+            </a>
+        </p>
+        <img src="pictures/cover/CvI0PYOXYAA7M2I.jpg" alt="" class="cover width">
+        <img src="pictures/cover/dev_oauth_badge.png" alt="" id="oauth-logo">
+    </section>
+    <section class="slide" id="about">
+        <h2>About me</h2>
+        <div class="double">
+            <div>
+                <img src="pictures/about/DSC_8851.jpg" style="width: 80%">
+            </div>
+            <div>
+                <h3>Sergey Podgornyy</h3>
+                <h4>Full-Stack Web Developer</h4>
+                <img src="pictures/about/WebbyLab_logo.png" alt="WebbyLab logo" id="webbylab-logo">
+
+                <div class="badges-block">
+                    <img src="pictures/about/zce-php-engineer-logo-l.jpg" class="badge-logo">
+                    <img src="pictures/about/LPIC-1-Logo-300x300.png" class="badge-logo">
+                    <img src="pictures/about/SUSE_Cert-Engineer_Linux.png" class="badge-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slide" id="agenda">
+        <h2>Agenda</h2>
+        <ol>
+            <li>Authentication</li>
+            <li class="next">Introduction to OAuth 2.0</li>
+            <li class="next">OAuth roles</li>
+            <li class="next">OAuth protocol flow</li>
+            <li class="next">Grant types</li>
+            <li class="next">Achieving statelessness with JWT</li>
+            <li class="next">Stored token vs JWT vs OAuth: How to secure an API</li>
+            <li class="next">DEMO - Token Authentication With OAuth &amp; JWT</li>
+            <li class="next">OAuth/JWT Cookbook</li>
+        </ol>
+    </section>
+    <section class="slide" id="intro">
+        <h2>Authentication</h2>
+        <div class="double">
+            <div>
+                <h3>Authentication</h3>
+                <p>verify the identity of the user given the credentials received</p>
+            </div>
+            <div>
+                <h3 style="margin-top: 100px;">Authorization</h3>
+                <p>determine if the user should be granted access to a particular resource</p>
+            </div>
+        </div>
+        <img src="pictures/intro/2055_512.png" alt="">
+    </section>
+    <section class="slide" id="is-secure">
+        <h2>Are our applications secure?</h2>
+        <div class="double">
+            <img src="pictures/is-secure/64fc377e6189cbd497e0004aa76e2329_left.png" alt="">
+            <img src="pictures/is-secure/1438360216132178258.png" alt="" class="next" style="float: right;">
+        </div>
+    </section>
+    <section class="slide" id="however">
+        <h2>However, time went</h2>
+        <img src="pictures/however/evolution-funny-2-time went.png" alt="">
+    </section>
+    <section class="slide" id="intro-oauth">
+        <h2>Introduction to OAuth 2.0</h2>
+        <p>
+            An <b>open protocol</b> to allow <b>secure authentication</b>
+            in a <b>simple</b> and <b>standard</b> method from web, mobile and a desktop applications
+        </p>
+    </section>
+    <section class="slide" id="roles">
+        <h2>OAuth 2.0: roles</h2>
+        <ul>
+            <li>
+                <img src="pictures/roles/user_male2-512.png" alt="">
+                <div>
+                    <h4>Resource owner</h4><br>
+                    <p>the person or the application that holds the data to be shared</p>
+                </div>
+            </li>
+            <li class="next">
+                <img src="pictures/roles/cloud-server-logo-isolated.png" alt="">
+                <div>
+                    <h4>Resource server</h4><br>
+                    <p>the application that holds the protected resource</p>
+                </div>
+            </li>
+            <li class="next">
+                <img src="pictures/roles/auth-server.png" alt="">
+                <div>
+                    <h4>Authorization server</h4><br>
+                    <p>the application that verifies the identity of the users</p>
+                </div>
+            </li>
+            <li class="next">
+                <img src="pictures/roles/laptop-icon-24.png" alt="">
+                <div>
+                    <h4>Client</h4><br>
+                    <p>the application that makes request to RS on behalf of the RO</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-1">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 33%; width: 30%">
+                I want to get the Death Star plans
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-2">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="bottom: 15%; left: 25%; width: 50%">
+                Hey, backend, could you please give me a Death Star plans?
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-3">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="bottom: 20%; right: 15%; width: 65%; text-align: right">
+                Sorry mate, this is a protected resource. You will need to present me an access token
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-4">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="bottom: 20%; left: 25%; width: 50%;">
+                Hi, can I get an access token please? Backend is asking
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-5">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 25%; right: 25%; width: 50%; text-align: right">
+                Sure thing sir! I just need to ask a few details to the user first
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-6">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 0; right: 20%; width: 55%; text-align: right">
+                Hi, could you please provide me your credentials? I need to verufy your identity
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-7">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 0; left: 20%; width: 65%">
+                That's no problem at all. I am <mark class="important">vader@gmail.com</mark>
+                and my password is <mark class="important">deathToJedi</mark>
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-8">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 25%; right: 20%; width: 60%; text-align: right">
+                The user is who claims to be. Here is your access token:
+                <mark class="important">qfE2KhvKggluHqe7IpTBqZ4qziTQQbKa</mark>
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-9">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="bottom: 15%; left: 25%; width: 50%">
+                Hey, backend, this is my token:
+                <mark class="important">qfE2KhvKggluHqe7IpTBqZ4qziTQQbKa</mark>
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-10">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 50%; right: 0; width: 80%; text-align: right">
+                Hi, I've been given <mark class="important">qfE2KhvKggluHqe7IpTBqZ4qziTQQbKa</mark>.
+                Could you please tell me who it belongs to?
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-11">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 33%; right: 0; width: 80%; text-align: right">
+                Of course. That token is still valid and it belongs to
+                <mark class="important">vader@gmail.com</mark>
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-12">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="bottom: 15%; left: 25%; width: 50%; text-align: right">
+                Everything is allright. This is the Death Star plans. Enjoy!
+            </p>
+        </div>
+    </section>
+    <section class="slide protocol-flow" id="protocol-flow-13">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="flow-wrapper">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="user">
+            <img src="pictures/roles/cloud-server-logo-isolated.png" alt="" class="server">
+            <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <p class="talk" style="top: 50%; width: 80%">
+                Here you are the Death Star plans! Thank you for your bussiness and have a good day, lord Vader!
+            </p>
+        </div>
+    </section>
+    <section class="slide" id="delegation">
+        <h2>OAuth 2.0: protocol flow</h2>
+        <div class="description">
+            OAuth 2.0 is a delegation protocol, as
+            <mark class="important client">this guy</mark>
+            has no idea about the credentials of
+            <mark class="important owner">this guy</mark>
+        </div>
+        <div class="images">
+            <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
+            <img src="pictures/roles/user_male2-512.png" alt="" class="owner">
+        </div>
+        <img src="pictures/delegation/Dr-Perry-Cox-dr-perry-cox-31479893-220-220.gif" alt="" class="next lol">
+    </section>
+    <section class="slide" id="grants">
+        <h2>OAuth 2.0: grant types</h2>
+        <ol>
+            <li>
+                <h4>Authorization code</h4>:
+                for web server applications
+            </li>
+            <li>
+                <h4>Implicit</h4>:
+                for JS front-end and mobile apps
+            </li>
+            <li>
+                <h4>Resource owner password credentials</h4>:
+                for trusted clients
+            </li>
+            <li>
+                <h4>Client credentials</h4>:
+                for service authentication
+            </li>
+        </ol>
+    </section>
+    <section class="slide" id="auth-code">
+        <h2>Authorization code grant</h2>
+        <ul>
+            <li>
+                For <b>server-based applications</b> where client ID and secret are secretly stored
+            </li>
+            <li>
+                It's a <b>redirect</b> flow, so it is for <b>web</b> server apps
+            </li>
+            <li>
+                The client (web server app) redirects the user to the authorization server to get a code
+            </li>
+            <li>
+                Then, using the code and its client credentials ask for an access token
+            </li>
+        </ul>
+        <figure class="next">
+            <blockquote>
+                <p>Involves the user granting the client an authorization code, which can be exchanged for an Access Token</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="auth-code-request">
+        <h2>Authorization code grant</h2>
+        <pre>
+            <code>
+https://facebook.com/dialog/oauth
+?<span class="rt">responce_type=code</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="ru">redirect_uri=https://my-server-api.com/oauth</span>
+&<span class="s">scope=email,public_profile</span>
+&<span class="st">state=</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>The client will redirect the user to the authorization server</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="auth-code-server-request">
+        <h2>Authorization code grant</h2>
+        <p><b>Server-side</b> POST request to https://graph.facebook.com/oath/access_token</p>
+        <p class="additions">With this body:</p>
+        <pre>
+            <code>
+?<span class="gt">grant_type=authorization_code</span>
+&<span class="c">code=CODE_FROM_QUERY_STRING</span>
+&<span class="ru">redirect_uri=https://my-server-api.com</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>The client will now send a POST request to the authorization server</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="auth-code-responce">
+        <h2>Authorization code grant</h2>
+        <p>Responce example:</p>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
+            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
+            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
+            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="implicit">
+        <h2>Implicit grant</h2>
+        <ul>
+            <li>
+                For <b>web applications</b> running on the browser or mobile app
+            </li>
+            <li>
+                Client credentials confidentiality <b>cannot be guaranteed</b>
+            </li>
+            <li>
+                Similar to the code grant, but in this case, the client <b>gets an access token directly</b>
+            </li>
+        </ul>
+        <figure class="next">
+            <blockquote>
+                <p>Rather than an Authorization Code being returned from the authorization request, a token is returned to the client</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="implicit-request">
+        <h2>Implicit grant</h2>
+        <pre>
+            <code>
+https://facebook.com/dialog/oauth
+?<span class="rt">responce_type=token</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="ru">redirect_uri=https://my-server-api.com#oauth</span>
+&<span class="s">scope=email,public_profile</span>
+&<span class="st">state=</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>All of these parameters will be validated by the authorization server. The user will then be asked to login to the authorization server and approve the client</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="password-credentials">
+        <h2>Password credentials grant</h2>
+        <ul>
+            <li>
+                In this case, client collects <b>username and password</b> to get an <b>access token directly</b>
+            </li>
+            <li>
+                Viable solution only for <b>trusted clients</b>:
+                <ul>
+                    <li>The official website consumer of your API</li>
+                    <li>The official mobile app consuming your API</li>
+                    <li>etc.</li>
+                </ul>
+            </li>
+        </ul>
+        <figure class="next">
+            <blockquote>
+                <p>The client will ask the user for their authorization credentials</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="password-credentials-request">
+        <h2>Password credentials grant</h2>
+        <p>POST request to https://api.example.org/oauth/access_token</p>
+        <pre>
+            <code>
+?<span class="gt">grant_type=password</span>
+&<span class="un">username=USERNAME</span>&<span class="pw">password=PASSWORD</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
+&<span class="ru">redirect_uri=https://my-server-api.com#oauth</span>
+&<span class="s">scope=email,public_profile</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>The client then sends a POST request with following body parameters to the authorization server</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="password-credentials-responce">
+        <h2>Password credentials grant</h2>
+        <p>Responce example:</p>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
+            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
+            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
+            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="client-credentials">
+        <h2>Client credentials grant</h2>
+        <ul>
+            <li>
+                <b>Server-to-server authentication</b>, whithout a particular user being involved
+                <ul>
+                    <li>eg. Orders service making a request to the Invoices service</li>
+                </ul>
+            </li>
+            <li>
+                The application authenticates itself using its <b>client ID</b> and <b>client secret</b>
+            </li>
+        </ul>
+        <figure class="next">
+            <blockquote>
+                <p>This grant is suitable for machine-to-machine authentication where a specific user’s permission to access data is not required</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="client-credentials-request">
+        <h2>Client credentials grant</h2>
+        <p>POST request to https://api.example.org/oauth/access_token</p>
+        <p class="additions">With this body:</p>
+        <pre>
+            <code>
+?<span class="gt">grant_type=client_credentials</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
+&<span class="s">scope=email,public_profile</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>The client then sends a POST request with following body parameters to the authorization server</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="client-credentials-responce">
+        <h2>Client credentials grant</h2>
+        <p>Responce example:</p>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
+            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
+            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
+            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="accessing-protected">
+        <h2>Accessing the protected resource</h2>
+        <p>Once the client has an access token, it can request a protected resource</p>
+        <pre>
+            <code>
+GET /death-star/plans HTTP/1.1
+Host: api.example.org
+<b>Authorization: Bearer <mark class="important">RsT5OjbzRn430zqMLgV3Ia</mark></b>
+            </code>
+        </pre>
+    </section>
+    <section class="slide" id="expiration">
+        <h2>Token expiration and Refresh</h2>
+        <ul>
+            <li>
+                If the Authorization server issues <b>expiring tokens</b>,
+                they can be paired with <b>refresh tokens</b>
+            </li>
+            <li>
+                When the access token has <b>expired</b>,
+                the refresh token can be used to <b>get a new access token</b>
+            </li>
+        </ul>
+        <div class="next" style="float: right">
+            <h3>More grants???</h3>
+            <img src="pictures/expiration/451_512.png" alt="">
+        </div>
+    </section>
+    <section class="slide" id="refresh-request">
+        <h2>Refresh token grant</h2>
+        <p>POST request to https://api.example.org/oauth/access_token</p>
+        <pre>
+            <code>
+?<span class="gt">grant_type=refresh_token</span>
+&<span class="rt">refresh_token=e1qoXg7Ik2RRua48lXIV</span>
+&<span class="ci">client_id=YOUR_CLIENT_ID</span>
+&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
+&<span class="s">scope=email,public_profile</span>
+            </code>
+        </pre>
+        <figure class="next">
+            <blockquote>
+                <p>Refresh token enables the client to get a new access token without requiring the user to be redirected</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="refresh-responce">
+        <h2>Refresh token grant</h2>
+        <p>Responce example:</p>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
+            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
+            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
+            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="fe-tips">
+        <h2>Tips for a front-end application</h2>
+        <ul>
+            <li>Use the <b>implicit grant</b></li>
+            <li>Use HTML5's <b>localStorage</b> for access and refresh tokens</li>
+        </ul>
+        <img src="pictures/tips/tumblr_mjgg91YRfH1rqiulxo1_500.gif" alt="">
+    </section>
+    <section class="slide" id="jwt-intro">
+        <h2>JSON Web Token</h2>
+        <p>
+            <b>JSON Web Token</b> is a compact URL-safe means of representing claims to be transferred between two parties. The claims are <b>encoded as a JSON</b> Object that is <b>digitally signed</b> by hashing it using a shared secret (JSON Web Signature) between the parties
+        </p>
+        <figure class="next">
+            <blockquote>
+                <p>JWT is a simple authentication protocol, OAuth is an authentication framework</p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="jwt-when">
+        <h2>When can JWT be useful?</h2>
+        <pre>
+            <code>
+POST /transfer HTTP/1.1
+from=acc1&to=acc2&amount=1000
+            </code>
+        </pre>
+        <p style="text-align: center"><b>vs</b></p>
+        <div class="double">
+            <pre>
+                <code>
+POST /transfer HTTP/1.1
+<mark class="important">RsT5OjbzRn430zqMLg</mark>
+                </code>
+            </pre>
+            <pre class="next json">
+                <code class="brackets">{</code>
+                <code>      <span class="keys">"from"</span>: <span class="values">"acc1"</span>,</code>
+                <code>      <span class="keys">"to"</span>: <span class="values">"acc2"</span>,</code>
+                <code>      <span class="keys">"amount"</span>: <span class="integers">1000</span></code>
+                <code class="brackets">}</code>
+            </pre>
+        </div>
+    </section>
+    <section class="slide" id="jwt-look">
+        <h2>How does a JWT look like?</h2>
+        <pre>
+            <code>
+<span class="header">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.
+<span class="claims">eyJleHAiOjE0MTY0NzE5MzQsInVzZXJfbmFtZSI6InVzZXIiLCJzY29
+wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXV0aG9yaXRpZXMiOlsiUk9MRV
+9BRE1JTiIsIlJPTEVfVVNFUiJdLCJqdGkiOiI5YmM5MmE0NC0wYjFhL
+TRjNWUtYmU3MC1kYTUyMDc1YjlhODQiLCJjbGllbnRfaWQiOiJteS1j
+bGllbnQtd2l0aC1zZWNyZXQifQ</span>.
+<span class="signature">AZCTD_fiCcnrQR5X7rJBQ5rO-2Qedc5_3qJJf-ZCvVY</span>
+            </code>
+        </pre>
+        <p class="description">
+            <span class="next header">Header</span>
+            <span class="next claims">Claims</span>
+            <span class="next signature">Signature</span>
+        </p>
+    </section>
+    <section class="slide" id="jwt-header">
+        <h2>JWT Header</h2>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"alg"</span>: <span class="values">"HS256"</span>,</code>
+            <code>      <span class="keys">"typ"</span>: <span class="values">"JWT"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="jwa">
+        <h2>JSON Web Algorithms</h2>
+        <pre>
+            <code>
++--------------+-----------------------------------+----------------+
+| alg Param    | Digital Signature or MAC          | Implementation |
+| Value        | Algorithm                         | Requirements   |
++--------------+-----------------------------------+----------------+
+| HS256        | HMAC using SHA-256                | Required       |
+| HS384        | HMAC using SHA-384                | Optional       |
+| HS512        | HMAC using SHA-512                | Optional       |
+| RS256        | RSASSA-PKCS-v1_5 using SHA-256    | Recommended    |
+| RS384        | RSASSA-PKCS-v1_5 using SHA-384    | Optional       |
+| RS512        | RSASSA-PKCS-v1_5 using SHA-512    | Optional       |
+| ES256        | ECDSA using P-256 and SHA-256     | Recommended+   |
+| ES384        | ECDSA using P-384 and SHA-384     | Optional       |
+| ES512        | ECDSA using P-521 and SHA-512     | Optional       |
+| PS256        | RSASSA-PSS using SHA-256 and MGF1 | Optional       |
+|              | with SHA-256                      |                |
+| PS384        | RSASSA-PSS using SHA-384 and MGF1 | Optional       |
+|              | with SHA-384                      |                |
+| PS512        | RSASSA-PSS using SHA-512 and MGF1 | Optional       |
+|              | with SHA-512                      |                |
+| none         | No digital signature or MAC       | Optional       |
+|              | performed                         |                |
++--------------+-----------------------------------+----------------+
+            </code>
+        </pre>
+        <img src="pictures/jwa/muy aburrido.png" alt="">
+    </section>
+    <section class="slide" id="jwt-claims">
+        <h2>JWT Claims</h2>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"exp"</span>: <span class="integers">1416471934</span>,</code>
+            <code>      <span class="keys">"user_name"</span>: <span class="values">"user"</span>,</code>
+            <code>      <span class="keys">"scope"</span>: [</code>
+            <code>          <span class="values">"read"</span>,</code>
+            <code>          <span class="values">"write"</span></code>
+            <code>      ],</code>
+            <code>      <span class="keys">"authorities"</span>: [</code>
+            <code>          <span class="values">"ROLE_ADMIN"</span>,</code>
+            <code>          <span class="values">"ROLE_USER"</span></code>
+            <code>      ],</code>
+            <code>      <span class="keys">"jti"</span>: <span class="values">"9bc92a44-0b1a-4c5e-be70-da52075b9a84"</span>,</code>
+            <code>      <span class="keys">"client_id"</span>: <span class="values">"my-client-with-secret"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="jwt-signature">
+        <h2>JWT Signature</h2>
+        <pre>
+            <code>
+<i>HMACSHA256</i>(
+    <i>base64</i>(<span class="header">header</span>) + <b>"."</b> + base64(<span class="payload">payload</span>),
+    <b>"secret"</b>
+)
+            </code>
+        </pre>
+    </section>
+    <section class="slide" id="jwt-responce">
+        <h2>Sample access token response</h2>
+        <pre>
+            <code class="brackets">{</code>
+            <code>      <span class="keys">"access_token"</span>: <span class="values">"eyJhbGciOiJIUzI1NiJ9.
+eyJleHAiOjE0MTY0NzEwNTUsInVzZXJfbmFtZSI6InVzZXIiLCJzY29wZS
+I6WyJyZWFkIiwid3JpdGUiXSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1J
+TiIsIlJPTEVfVVNFUiJdLCJqdGkiOiIzZGJjODE4Yi0wMjAyLTRiYzItYT
+djZi1mMmZlNjY4MjAyMmEiLCJjbGllbnRfaWQiOiJteS1jbGllbnQtd2l0
+aC1zZWNyZXQifQ.
+Wao_6hLnOeMHS4HEel1UGWt1g86ad9N0qCexr1IL7IM"</span>,</code>
+            <code>      <span class="keys">"token_type"</span>: <span class="values">"bearer"</span>,</code>
+            <code>      <span class="keys">"expires_in"</span>: <span class="integers">43199</span>,</code>
+            <code>      <span class="keys">"scope"</span>: <span class="values">"read write"</span>,</code>
+            <code>      <span class="keys">"jti"</span>: <span class="values">"3dbc818b-0202-4bc2-a7cf-f2fe6682022a"</span></code>
+            <code class="brackets">}</code>
+        </pre>
+    </section>
+    <section class="slide" id="demo">
+        <h2 class="shout shrink">DEMO</h2>
+        <img src="pictures/demo/71960fbdf396f732051c2e88a6c39443.gif" alt="">
+    </section>
+    <section class="slide" id="see-more">
+        <h2 class="shout">
+            <a href="https://github.com/SergeyPodgornyy">See more on GitHub</a>
+        </h2>
+    </section>
+    <section class="slide" id="useful">
+        <h2>Useful links</h2>
+        <div class="double">
+            <ul>
+                <li>
+                    <a href="https://tools.ietf.org/html/draft-ietf-oauth-v2-31">
+                        The OAuth 2.0 Authorization Framework
+                    </a>
+                </li>
+                <li>
+                    <a href="https://tools.ietf.org/html/draft-ietf-oauth-v2-threatmodel-07">
+                        OAuth 2.0 Threat Model and Security Considerations
+                    </a>
+                </li>
+                <li>
+                    <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-11">
+                        JSON Web Token (JWT)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40">
+                        JSON Web Algorithms (JWA)
+                    </a>
+                </li>
+            </ul>
+            <img src="pictures/useful/3375_512.png" alt="">
+        </div>
+    </section>
+    <section class="slide" id="qa">
+        <div class="content">
+            <h3>End of presentation this is!</h3>
+            <h3>Any question do you have?</h3>
+        </div>
+        <img src="pictures/qa/yoda_w3pn.jpg" class="cover width">
+    </section>
+    <p class="badge">
+        <a href="https://github.com/SergeyPodgornyy">Fork me on GitHub</a>
+    </p>
+    <div class="progress"></div>
+    <script src="shower/shower.min.js"></script>
+</body>
+</html>
