@@ -34,6 +34,13 @@ span.brackets {
     color: #46ad62;
 }
 
+.pros {
+    color: #1e921e !important;
+}
+.cons {
+    color: #d20000 !important;
+}
+
 /*******************************************************************************
     TITLE (COVER) PAGE
 *******************************************************************************/
@@ -340,6 +347,7 @@ span.brackets {
     width: 25%;
 }
 
+
 /*******************************************************************************
     WHEN JWT PAGE
 *******************************************************************************/
@@ -352,7 +360,7 @@ span.brackets {
     margin-top: 100px;
 }
 #jwt-when pre.json code {
-    margin-top: -5px;
+    margin-top: -15px;
 }
 
 /*******************************************************************************
@@ -412,6 +420,52 @@ span.brackets {
 }
 
 /*******************************************************************************
+    STATELESSNESS PAGE
+*******************************************************************************/
+
+#stateful-stateless img {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+
+#statelessness mark {
+    border-radius: none;
+}
+#statelessness mark.state {
+    background: #a2dcfa;
+}
+#statelessness mark.transfer {
+    background: #faa2a2;
+}
+
+
+/*******************************************************************************
+    WHY OAUTH PAGE
+*******************************************************************************/
+
+#why-oauth h2 {
+    font-size: 110px;
+}
+
+#jwt-pros-cons li,
+#oauth-pros-cons li {
+    font-size: 20px;
+}
+#oauth-pros-cons {
+    padding-left: 80px;
+}
+#oauth-pros-cons ul ul li {
+    text-align: right;
+    font: 18px/1.7 "PT Sans",sans-serif;
+    color: #555;
+    margin-top: -5px;
+}
+#oauth-pros-cons ul ul li::before {
+    content: none;
+}
+
+/*******************************************************************************
     DEMO PAGE
 *******************************************************************************/
 
@@ -424,6 +478,66 @@ span.brackets {
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
+}
+
+#cookbook img {
+    width: 100%;
+}
+#nodejs-cookbook img.logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    background: black;
+    border: 10px solid black;
+}
+#nodejs-cookbook .title {
+    text-align: center;
+    color: #282828;
+}
+#nodejs-cookbook .code,
+#php-cookbook .code {
+    color: white;
+    background: #333;
+    padding: 25px 50px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+#php-cookbook .code {
+    margin: 0 auto;
+    line-height: 1.2;
+}
+#nodejs-cookbook .supported {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 25%;
+    color: #555;
+    text-align: center;
+}
+#nodejs-cookbook .auth0 {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-left: 6px;
+    margin-bottom: -8px;
+    background: url(../pictures/cookbook/supported_logo.svg) no-repeat;
+}
+
+#php-cookbook .projects {
+    text-align: center;
+}
+#php-cookbook .projects a {
+    text-decoration: none;
+    background: none;
+    margin: 0 50px;
+}
+#php-cookbook .projects img {
+    height: 120px;
+}
+#php-cookbook img.logo {
+    display: block;
+    margin: 10px auto;
+    width: 25%;
 }
 
 /*******************************************************************************

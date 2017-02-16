@@ -19,7 +19,7 @@
     </header>
     <section class="slide" id="cover">
         <h2>OAuth and why you should to use it?</h2>
-        <p>Peresented to you by
+        <p>Presented to you by
             <a href="https://www.linkedin.com/in/sergey-podgornyy-5ab63385/">
                 Sergey Podgornyy
             </a>
@@ -55,7 +55,7 @@
             <li class="next">OAuth protocol flow</li>
             <li class="next">Grant types</li>
             <li class="next">Achieving statelessness with JWT</li>
-            <li class="next">Stored token vs JWT vs OAuth: How to secure an API</li>
+            <li class="next">Stored token vs JWT vs OAuth</li>
             <li class="next">DEMO - Token Authentication With OAuth &amp; JWT</li>
             <li class="next">OAuth/JWT Cookbook</li>
         </ol>
@@ -282,7 +282,7 @@
             <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
             <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
             <p class="talk" style="top: 50%; width: 80%">
-                Here you are the Death Star plans! Thank you for your bussiness and have a good day, lord Vader!
+                Here you are the Death Star plans! Thank you for your bussiness and have a good day!
             </p>
         </div>
     </section>
@@ -406,8 +406,33 @@ Host: api.example.org
             <img src="pictures/expiration/451_512.png" alt="">
         </div>
     </section>
+    <section class="slide" id="stateful-stateless">
+        <h2>Stateful vs Stateless</h2>
+        <ul>
+            <li>
+                Authorization Servers are often <b>stateful services</b>
+                <ul>
+                    <li>They stored issued access token for future checking</li>
+                </ul>
+            </li>
+            <li>
+                How can we achieve <b>statelessness</b>?
+                <ul class="next">
+                    <li>Using JWT tokens as access tokens</li>
+                </ul>
+            </li>
+        </ul>
+        <img src="pictures/state/417678.jpg" alt="">
+    </section>
     <section class="slide" id="jwt-when">
         <h2>JWT and when it can be useful?</h2>
+        <figure>
+            <blockquote>
+                <p>
+                    JWT (JSON Web Token) is a <b>secure</b> way to encapsulate <b>arbitrary data</b> that can be sent over <b>unsecure URL</b>'s
+                </p>
+            </blockquote>
+        </figure>
         <pre>
             <code>
 POST /transfer HTTP/1.1
@@ -507,6 +532,96 @@ Wao_6hLnOeMHS4HEel1UGWt1g86ad9N0qCexr1IL7IM"</span>,</code>
             <code class="brackets">}</code>
         </pre>
     </section>
+    <section class="slide" id="statelessness">
+        <h2>Achieving statelessness</h2>
+        <ul>
+            <li>
+                Instead of storing <b>access token / principal</b> relationship
+                in a stateful way, do it on a JWT
+            </li>
+            <li>
+                Access tokens with the <b>JWT-encoded principal</b>
+                can be securely stored on the client's browser
+            </li>
+            <li>
+                That way you are achieving one of the basic principal of
+                <mark class="important">RE</mark>
+                <mark class="important state">S</mark>
+                <mark class="important transfer">T</mark>:
+                <br>
+                <mark class="important state">State</mark>
+                <mark class="important transfer">Transfer</mark>
+            </li>
+        </ul>
+    </section>
+    <section class="slide" id="why-oauth">
+        <h2 class="shout shrink">So why I should to use OAuth?</h2>
+    </section>
+    <section class="slide" id="session-pros-cons">
+        <h2>Session IDs / Cookies</h2>
+        <div>
+            <h4 class="pros">Pros</h4>
+            <ul>
+                <li>Easy to code both the client and server</li>
+                <li>Easy to destroy a session when someone logs out</li>
+            </ul>
+        </div>
+        <div class="next">
+            <h4 class="cons">Cons</h4>
+            <ul>
+                <li>The server side periodically needs to delete expired sessions where the client didn't logout</li>
+                <li>Every HTTP request requires a lookup to the data store</li>
+                <li>Storage requirements grow as more users have active sessions</li>
+                <li>Sometimes you need to have multiple server, and session data needs to be accessible by all of them</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide" id="jwt-pros-cons">
+        <h2>JSON Web Tokens (JWT)</h2>
+        <div>
+            <h4 class="pros">Pros</h4>
+            <ul>
+                <li>The server side storage issues are gone</li>
+                <li>The client side code is easy</li>
+            </ul>
+        </div>
+        <div class="next">
+            <h4 class="cons">Cons</h4>
+            <ul>
+                <li>The JWT size could be larger than a session ID. It could affect network performance</li>
+                <li>The data stored in the JWT is readable by the client</li>
+                <li>The server side needs code to generate, validate, and read JWTs</li>
+                <li>Anyone who gets a copy of the signing key can create JWTs. You might not know when this happens</li>
+                <li>There was (is?) a bug in some libraries that accepted any JWT signed with the "none" algorithm</li>
+                <li>In order to revoke a JWT before it expires you need to use a revocation list. This gets you back to the server side storage issues you were trying to avoid</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide" id="oauth-pros-cons">
+        <h2>OAuth</h2>
+        <div>
+            <h4 class="pros">Pros</h4>
+            <ul>
+                <li>No code for users to signup or reset their password</li>
+                <li>No code to send an email with a validation link</li>
+                <li>Users do not need to learn/write-down another username and password</li>
+            </ul>
+        </div>
+        <div class="next">
+            <h4 class="cons">Cons</h4>
+            <ul>
+                <li>
+                    If third party service goes down or they discontinue it then you need to figure something else out
+                    <ul>
+                        <li>how do you migrate the user's account data if their identity changes from "foo@a.com" to "bar@b.com"?</li>
+                    </ul>
+                </li>
+                <li>Usually you have to write code for each provider</li>
+                <li>You or your users might have privacy concerns on your system. The providers know which of their users use your service</li>
+                <li>You are trusting the provider. It is possible for a provider to issue tokens that are valid for one user to someone else</li>
+            </ul>
+        </div>
+    </section>
     <section class="slide" id="demo">
         <h2 class="shout shrink">DEMO</h2>
         <img src="pictures/demo/71960fbdf396f732051c2e88a6c39443.gif" alt="">
@@ -515,6 +630,38 @@ Wao_6hLnOeMHS4HEel1UGWt1g86ad9N0qCexr1IL7IM"</span>,</code>
         <h2 class="shout">
             <a href="https://github.com/SergeyPodgornyy">See more on GitHub</a>
         </h2>
+    </section>
+    <section class="slide" id="cookbook">
+        <h2>Cookbook</h2>
+        <img src="pictures/cookbook/what-homer-simpson-taught-us-about-doughnuts.png" alt="">
+    </section>
+    <section class="slide" id="nodejs-cookbook">
+        <h2>Node.js Cookbook</h2>
+        <img src="pictures/cookbook/passportjs-logo.svg" alt="" class="logo">
+        <h3 class="title">Passport.js</h3>
+        <p class="code next">
+            npm install passport
+        </p>
+        <a href="http://auth0.com" target="_blank" class="supported next">
+            Supported by <i class="auth0"></i>
+        </a>
+    </section>
+    <section class="slide" id="php-cookbook">
+        <h2>PHP Cookbook</h2>
+        <div class="projects">
+            <a href="https://github.com/thephpleague/oauth2-client">
+                <img src="pictures/cookbook/oauth2-client.png" alt="">
+            </a>
+            <a href="https://github.com/thephpleague/oauth2-server">
+                <img src="pictures/cookbook/oauth2-server.png" alt="">
+            </a>
+        </div>
+        <img src="pictures/cookbook/phpleague-logo.png" alt="" class="logo next">
+        <p class="code next">
+            composer require league/oauth2-client
+            <br>
+            composer require league/oauth2-server
+        </p>
     </section>
     <section class="slide" id="useful">
         <h2>Useful links</h2>
@@ -538,6 +685,11 @@ Wao_6hLnOeMHS4HEel1UGWt1g86ad9N0qCexr1IL7IM"</span>,</code>
                 <li>
                     <a href="https://alexbilbie.com/guide-to-oauth-2-grants/">
                         Alex Bilbie blog
+                    </a>
+                </li>
+                <li>
+                    <a href="http://oauthlib.readthedocs.io/en/latest/oauth2/oauth2.html">
+                        OAuthLib documentation (.py lib)
                     </a>
                 </li>
             </ul>
