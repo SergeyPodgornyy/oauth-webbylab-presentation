@@ -17,6 +17,23 @@
     font: 700 25px/1 PT Sans Narrow,sans-serif;
 }
 
+code.keys,
+span.keys {
+    color: #d20000;
+}
+code.values,
+span.values {
+    color: #33598c;
+}
+code.integers,
+span.integers {
+    color: #7e2bb9;
+}
+code.brackets,
+span.brackets {
+    color: #46ad62;
+}
+
 /*******************************************************************************
     TITLE (COVER) PAGE
 *******************************************************************************/
@@ -255,7 +272,7 @@
 }
 
 /*******************************************************************************
-    GRANTS PAGE
+    GRANT PAGES
 *******************************************************************************/
 
 #grants li {
@@ -269,133 +286,32 @@
     display: inline;
 }
 
-/*******************************************************************************
-    AUTHORIZATION CODE / IMPLICIT / PASSWORD CREDENTIALS / CLIENT / REFRESH PAGE
-*******************************************************************************/
-
-#auth-code blockquote {
-    margin-top: 10%;
+#auth-code h2,
+#implicit h2,
+#client-credentials h2 {
+    margin-bottom: 0;
 }
-
-#auth-code-request code span,
-#auth-code-server-request code span,
-#implicit-request code span,
-#password-credentials-request code span,
-#client-credentials-request code span,
-#refresh-request code span {
-    font-weight: bold;
+#auth-code img,
+#implicit img,
+#password-credentials img,
+#client-credentials img {
+    width: 100%;
 }
-#auth-code-request code span.rt,
-#auth-code-server-request code span.gt,
-#password-credentials-request code span.gt,
-#client-credentials-request code span.gt,
-#refresh-request code span.gt,
-#implicit-request code span.rt {
-    color: #dc6151;
+#implicit img {
+    margin-top: -5%;
 }
-#password-credentials-request code span.un,
-#password-credentials-request code span.pw,
-#refresh-request code span.rt {
-    color: #5193dc;
-}
-#auth-code-request code span.ci,
-#auth-code-server-request code span.ci,
-#password-credentials-request code span.ci,
-#client-credentials-request code span.ci,
-#refresh-request code span.ci,
-#implicit-request code span.ci {
-    color: #1f3f60;
-}
-#auth-code-request code span.ru,
-#auth-code-server-request code span.ru,
-#password-credentials-request code span.ru,
-#implicit-request code span.ru {
-    color: #19750a;
-}
-#auth-code-request code span.s,
-#auth-code-server-request code span.c,
-#password-credentials-request code span.s,
-#client-credentials-request code span.s,
-#refresh-request code span.s,
-#implicit-request code span.s {
-    color: #660a75;
-}
-#auth-code-request code span.st,
-#auth-code-server-request code span.cs,
-#password-credentials-request code span.cs,
-#client-credentials-request code span.cs,
-#refresh-request code span.cs,
-#implicit-request code span.st {
-    color: #c17c21;
-}
-
-#implicit-request pre {
-    margin: -25px 0;
-}
-#client-credentials-request pre {
-    margin: -50px 0;
-}
-#refresh-request pre {
-    margin: -70px 0 -50px;
-}
-#password-credentials-request pre {
-    margin: -75px 0;
-}
-
-#auth-code-request figure,
-#auth-code-server-request figure {
-    margin-top: -50px;
-}
-#password-credentials figure,
-#password-credentials-request figure {
-    margin-top: 50px;
-}
-#refresh-request figure {
-    margin-top: 25px;
+#auth-code p {
+    margin-top: -30px;
+    font: 25px/1.5 "PT Sans",sans-serif;
 }
 #client-credentials figure {
-    margin-top: 100px;
+    margin-top: -5%;
 }
 
-#auth-code-server-request p.additions,
-#client-credentials-request p.additions {
-    margin-bottom: -50px;
-}
-
-#auth-code-responce span.keys,
-#password-credentials-responce span.keys,
-#client-credentials-responce span.keys,
-#refresh-responce span.keys {
-    color: #d20000;
-}
-#auth-code-responce span.values,
-#password-credentials-responce span.values,
-#client-credentials-responce span.values,
-#refresh-responce span.values {
-    color: #33598c;
-}
-#auth-code-responce span.integers,
-#password-credentials-responce span.integers,
-#client-credentials-responce span.integers,
-#refresh-responce span.integers {
-    color: #7e2bb9;
-}
-#auth-code-responce .brackets,
-#password-credentials-responce .brackets,
-#client-credentials-responce .brackets,
-#refresh-responce .brackets {
-    color: #46ad62;
-}
-
-/*******************************************************************************
-    EXPIRATION PAGE
-*******************************************************************************/
-
-#expiration .next h3 {
-    display: inline;
-}
-#expiration .next img {
-    width: 25%;
+#select-grant img {
+    height: 90%;
+    display: block;
+    margin: -2% auto;
 }
 
 /*******************************************************************************
@@ -412,20 +328,16 @@
     margin-top: -75px;
 }
 
+
 /*******************************************************************************
-    JWT INTRO PAGE
+    EXPIRATION PAGE
 *******************************************************************************/
 
-#jwt-intro {
-    background: radial-gradient(circle, rgba(255, 255, 255, .5), rgba(255, 255, 255, .9)),
-                url('../pictures/jwt/jwt_logo.png') 50% 50% no-repeat,
-                white;
+#expiration .next h3 {
+    display: inline;
 }
-
-#jwt-intro > p {
-    text-align: center;
-    margin-top: 5%;
-    font: 30px/2 "PT Sans",sans-serif;
+#expiration .next img {
+    width: 25%;
 }
 
 /*******************************************************************************
@@ -441,19 +353,6 @@
 }
 #jwt-when pre.json code {
     margin-top: -5px;
-}
-
-#jwt-when span.keys {
-    color: #d20000;
-}
-#jwt-when span.values {
-    color: #33598c;
-}
-#jwt-when span.integers {
-    color: #7e2bb9;
-}
-#jwt-when .brackets {
-    color: #46ad62;
 }
 
 /*******************************************************************************
@@ -494,30 +393,6 @@
 #jwt-signature code span {
     font-weight: bold;
 }
-#jwt-header span.keys,
-#jwt-claims span.keys,
-#jwt-signature span.keys,
-#jwt-responce span.keys {
-    color: #d20000;
-}
-#jwt-header span.values,
-#jwt-claims span.values,
-#jwt-signature span.values,
-#jwt-responce span.values {
-    color: #33598c;
-}
-#jwt-header span.integers,
-#jwt-claims span.integers,
-#jwt-signature span.integers,
-#jwt-responce span.integers {
-    color: #7e2bb9;
-}
-#jwt-header .brackets,
-#jwt-claims .brackets,
-#jwt-signature .brackets,
-#jwt-responce .brackets {
-    color: #46ad62;
-}
 
 #jwt-claims pre code {
     margin-top: -16px;
@@ -534,23 +409,6 @@
 }
 #jwt-signature code .payload {
     color: #19750a;
-}
-
-/*******************************************************************************
-    JWA PAGE
-*******************************************************************************/
-
-#jwa pre code {
-    font: 15px/1 monospace;
-    text-align: center;
-    box-sizing: content-box;
-    max-width: 100%;
-}
-
-#jwa img {
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 /*******************************************************************************

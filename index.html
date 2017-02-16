@@ -78,7 +78,7 @@
         <h2>Are our applications secure?</h2>
         <div class="double">
             <img src="pictures/is-secure/64fc377e6189cbd497e0004aa76e2329_left.png" alt="">
-            <img src="pictures/is-secure/1438360216132178258.png" alt="" class="next" style="float: right;">
+            <img src="pictures/is-secure/1438360216132178258.png" alt="" class="next" style="float: right; width: 200px">
         </div>
     </section>
     <section class="slide" id="however">
@@ -193,7 +193,7 @@
             <img src="pictures/roles/auth-server.png" alt="" class="auth-server">
             <img src="pictures/roles/laptop-icon-24.png" alt="" class="client">
             <p class="talk" style="top: 0; right: 20%; width: 55%; text-align: right">
-                Hi, could you please provide me your credentials? I need to verufy your identity
+                Hi, could you please provide me your credentials? I need to verify your identity
             </p>
         </div>
     </section>
@@ -323,204 +323,32 @@
     </section>
     <section class="slide" id="auth-code">
         <h2>Authorization code grant</h2>
-        <ul>
-            <li>
-                For <b>server-based applications</b> where client ID and secret are secretly stored
-            </li>
-            <li>
-                It's a <b>redirect</b> flow, so it is for <b>web</b> server apps
-            </li>
-            <li>
-                The client (web server app) redirects the user to the authorization server to get a code
-            </li>
-            <li>
-                Then, using the code and its client credentials ask for an access token
-            </li>
-        </ul>
+        <img src="pictures/grants/Auth_code_01.png" alt="">
         <figure class="next">
             <blockquote>
                 <p>Involves the user granting the client an authorization code, which can be exchanged for an Access Token</p>
             </blockquote>
         </figure>
     </section>
-    <section class="slide" id="auth-code-request">
-        <h2>Authorization code grant</h2>
-        <pre>
-            <code>
-https://facebook.com/dialog/oauth
-?<span class="rt">responce_type=code</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="ru">redirect_uri=https://my-server-api.com/oauth</span>
-&<span class="s">scope=email,public_profile</span>
-&<span class="st">state=</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>The client will redirect the user to the authorization server</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="auth-code-server-request">
-        <h2>Authorization code grant</h2>
-        <p><b>Server-side</b> POST request to https://graph.facebook.com/oath/access_token</p>
-        <p class="additions">With this body:</p>
-        <pre>
-            <code>
-?<span class="gt">grant_type=authorization_code</span>
-&<span class="c">code=CODE_FROM_QUERY_STRING</span>
-&<span class="ru">redirect_uri=https://my-server-api.com</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>The client will now send a POST request to the authorization server</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="auth-code-responce">
-        <h2>Authorization code grant</h2>
-        <p>Responce example:</p>
-        <pre>
-            <code class="brackets">{</code>
-            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
-            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
-            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
-            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
-            <code class="brackets">}</code>
-        </pre>
-    </section>
     <section class="slide" id="implicit">
         <h2>Implicit grant</h2>
-        <ul>
-            <li>
-                For <b>web applications</b> running on the browser or mobile app
-            </li>
-            <li>
-                Client credentials confidentiality <b>cannot be guaranteed</b>
-            </li>
-            <li>
-                Similar to the code grant, but in this case, the client <b>gets an access token directly</b>
-            </li>
-        </ul>
-        <figure class="next">
-            <blockquote>
-                <p>Rather than an Authorization Code being returned from the authorization request, a token is returned to the client</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="implicit-request">
-        <h2>Implicit grant</h2>
-        <pre>
-            <code>
-https://facebook.com/dialog/oauth
-?<span class="rt">responce_type=token</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="ru">redirect_uri=https://my-server-api.com#oauth</span>
-&<span class="s">scope=email,public_profile</span>
-&<span class="st">state=</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>All of these parameters will be validated by the authorization server. The user will then be asked to login to the authorization server and approve the client</p>
-            </blockquote>
-        </figure>
+        <img src="pictures/grants/Implicit_grant_01.png" alt="">
     </section>
     <section class="slide" id="password-credentials">
         <h2>Password credentials grant</h2>
-        <ul>
-            <li>
-                In this case, client collects <b>username and password</b> to get an <b>access token directly</b>
-            </li>
-            <li>
-                Viable solution only for <b>trusted clients</b>:
-                <ul>
-                    <li>The official website consumer of your API</li>
-                    <li>The official mobile app consuming your API</li>
-                    <li>etc.</li>
-                </ul>
-            </li>
-        </ul>
-        <figure class="next">
-            <blockquote>
-                <p>The client will ask the user for their authorization credentials</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="password-credentials-request">
-        <h2>Password credentials grant</h2>
-        <p>POST request to https://api.example.org/oauth/access_token</p>
-        <pre>
-            <code>
-?<span class="gt">grant_type=password</span>
-&<span class="un">username=USERNAME</span>&<span class="pw">password=PASSWORD</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
-&<span class="ru">redirect_uri=https://my-server-api.com#oauth</span>
-&<span class="s">scope=email,public_profile</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>The client then sends a POST request with following body parameters to the authorization server</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="password-credentials-responce">
-        <h2>Password credentials grant</h2>
-        <p>Responce example:</p>
-        <pre>
-            <code class="brackets">{</code>
-            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
-            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
-            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
-            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
-            <code class="brackets">}</code>
-        </pre>
+        <img src="pictures/grants/Password_credentials_01.png" alt="">
     </section>
     <section class="slide" id="client-credentials">
         <h2>Client credentials grant</h2>
-        <ul>
-            <li>
-                <b>Server-to-server authentication</b>, whithout a particular user being involved
-                <ul>
-                    <li>eg. Orders service making a request to the Invoices service</li>
-                </ul>
-            </li>
-            <li>
-                The application authenticates itself using its <b>client ID</b> and <b>client secret</b>
-            </li>
-        </ul>
+        <img src="pictures/grants/Client_credentials_01.png">
         <figure class="next">
             <blockquote>
                 <p>This grant is suitable for machine-to-machine authentication where a specific user’s permission to access data is not required</p>
             </blockquote>
         </figure>
     </section>
-    <section class="slide" id="client-credentials-request">
-        <h2>Client credentials grant</h2>
-        <p>POST request to https://api.example.org/oauth/access_token</p>
-        <p class="additions">With this body:</p>
-        <pre>
-            <code>
-?<span class="gt">grant_type=client_credentials</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
-&<span class="s">scope=email,public_profile</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>The client then sends a POST request with following body parameters to the authorization server</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="client-credentials-responce">
-        <h2>Client credentials grant</h2>
-        <p>Responce example:</p>
+    <section class="slide" id="oauth-responce">
+        <h2>Responce example</h2>
         <pre>
             <code class="brackets">{</code>
             <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
@@ -529,6 +357,26 @@ https://facebook.com/dialog/oauth
             <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
             <code class="brackets">}</code>
         </pre>
+        <figure class="next">
+            <blockquote>
+                <p>
+                    <mark class="important">Except Implicit</mark> grant,
+                    where authorization server returns only an access token
+                </p>
+            </blockquote>
+        </figure>
+    </section>
+    <section class="slide" id="select-grant">
+        <h2>Which OAuth 2.0 grant should I use?</h2>
+        <img src="pictures/grants/oauth-grants.svg" alt="">
+    </section>
+    <section class="slide" id="fe-tips">
+        <h2>Tips for a front-end application</h2>
+        <ul>
+            <li>Use the <b>implicit grant</b></li>
+            <li>Use HTML5's <b>localStorage</b> for access and refresh tokens</li>
+        </ul>
+        <img src="pictures/tips/tumblr_mjgg91YRfH1rqiulxo1_500.gif" alt="">
     </section>
     <section class="slide" id="accessing-protected">
         <h2>Accessing the protected resource</h2>
@@ -558,57 +406,8 @@ Host: api.example.org
             <img src="pictures/expiration/451_512.png" alt="">
         </div>
     </section>
-    <section class="slide" id="refresh-request">
-        <h2>Refresh token grant</h2>
-        <p>POST request to https://api.example.org/oauth/access_token</p>
-        <pre>
-            <code>
-?<span class="gt">grant_type=refresh_token</span>
-&<span class="rt">refresh_token=e1qoXg7Ik2RRua48lXIV</span>
-&<span class="ci">client_id=YOUR_CLIENT_ID</span>
-&<span class="cs">client_secret=YOUR_CLIENT_SECRET</span>
-&<span class="s">scope=email,public_profile</span>
-            </code>
-        </pre>
-        <figure class="next">
-            <blockquote>
-                <p>Refresh token enables the client to get a new access token without requiring the user to be redirected</p>
-            </blockquote>
-        </figure>
-    </section>
-    <section class="slide" id="refresh-responce">
-        <h2>Refresh token grant</h2>
-        <p>Responce example:</p>
-        <pre>
-            <code class="brackets">{</code>
-            <code>      <span class="keys">"access_token"</span>: <span class="values">"RsT5OjbzRn430zqMLgV3Ia"</span>,</code>
-            <code>      <span class="keys">"token_type"</span>: <span class="values">"Bearer"</span>,</code>
-            <code>      <span class="keys">"expires_in"</span>: <span class="integers">3600</span>,</code>
-            <code>      <span class="keys">"refresh_token"</span>: <span class="values">"e1qoXg7Ik2RRua48lXIV"</span></code>
-            <code class="brackets">}</code>
-        </pre>
-    </section>
-    <section class="slide" id="fe-tips">
-        <h2>Tips for a front-end application</h2>
-        <ul>
-            <li>Use the <b>implicit grant</b></li>
-            <li>Use HTML5's <b>localStorage</b> for access and refresh tokens</li>
-        </ul>
-        <img src="pictures/tips/tumblr_mjgg91YRfH1rqiulxo1_500.gif" alt="">
-    </section>
-    <section class="slide" id="jwt-intro">
-        <h2>JSON Web Token</h2>
-        <p>
-            <b>JSON Web Token</b> is a compact URL-safe means of representing claims to be transferred between two parties. The claims are <b>encoded as a JSON</b> Object that is <b>digitally signed</b> by hashing it using a shared secret (JSON Web Signature) between the parties
-        </p>
-        <figure class="next">
-            <blockquote>
-                <p>JWT is a simple authentication protocol, OAuth is an authentication framework</p>
-            </blockquote>
-        </figure>
-    </section>
     <section class="slide" id="jwt-when">
-        <h2>When can JWT be useful?</h2>
+        <h2>JWT and when it can be useful?</h2>
         <pre>
             <code>
 POST /transfer HTTP/1.1
@@ -659,36 +458,6 @@ bGllbnQtd2l0aC1zZWNyZXQifQ</span>.
             <code>      <span class="keys">"typ"</span>: <span class="values">"JWT"</span></code>
             <code class="brackets">}</code>
         </pre>
-    </section>
-    <section class="slide" id="jwa">
-        <h2>JSON Web Algorithms</h2>
-        <pre>
-            <code>
-+--------------+-----------------------------------+----------------+
-| alg Param    | Digital Signature or MAC          | Implementation |
-| Value        | Algorithm                         | Requirements   |
-+--------------+-----------------------------------+----------------+
-| HS256        | HMAC using SHA-256                | Required       |
-| HS384        | HMAC using SHA-384                | Optional       |
-| HS512        | HMAC using SHA-512                | Optional       |
-| RS256        | RSASSA-PKCS-v1_5 using SHA-256    | Recommended    |
-| RS384        | RSASSA-PKCS-v1_5 using SHA-384    | Optional       |
-| RS512        | RSASSA-PKCS-v1_5 using SHA-512    | Optional       |
-| ES256        | ECDSA using P-256 and SHA-256     | Recommended+   |
-| ES384        | ECDSA using P-384 and SHA-384     | Optional       |
-| ES512        | ECDSA using P-521 and SHA-512     | Optional       |
-| PS256        | RSASSA-PSS using SHA-256 and MGF1 | Optional       |
-|              | with SHA-256                      |                |
-| PS384        | RSASSA-PSS using SHA-384 and MGF1 | Optional       |
-|              | with SHA-384                      |                |
-| PS512        | RSASSA-PSS using SHA-512 and MGF1 | Optional       |
-|              | with SHA-512                      |                |
-| none         | No digital signature or MAC       | Optional       |
-|              | performed                         |                |
-+--------------+-----------------------------------+----------------+
-            </code>
-        </pre>
-        <img src="pictures/jwa/muy aburrido.png" alt="">
     </section>
     <section class="slide" id="jwt-claims">
         <h2>JWT Claims</h2>
@@ -767,8 +536,8 @@ Wao_6hLnOeMHS4HEel1UGWt1g86ad9N0qCexr1IL7IM"</span>,</code>
                     </a>
                 </li>
                 <li>
-                    <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40">
-                        JSON Web Algorithms (JWA)
+                    <a href="https://alexbilbie.com/guide-to-oauth-2-grants/">
+                        Alex Bilbie blog
                     </a>
                 </li>
             </ul>
