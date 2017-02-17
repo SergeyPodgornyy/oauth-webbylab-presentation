@@ -1,4 +1,8 @@
-# Shower Presentation Template [![Build Status](https://travis-ci.org/shower/shower.svg?branch=master)](https://travis-ci.org/shower/shower)
+# OAuth and why you should to use it?
+
+Online preview you can find [here](https://sergeypodgornyy.github.io/oauth-webbylab-presentation/)
+
+## Shower Presentation Template [![Build Status](https://travis-ci.org/shower/shower.svg?branch=master)](https://travis-ci.org/shower/shower)
 
 1. Built on HTML, CSS and vanilla JavaScript
 2. Works in all modern browsers
