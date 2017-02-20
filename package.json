@@ -1,7 +1,7 @@
 {
   "name": "oauth-webbylab-presentation",
-  "description": "OAuth and why you should to use it",
-  "version": "0.1.0",
+  "description": "OAuth and why you should use it",
+  "version": "0.1.1",
   "author": {
     "name": "Sergey Podgornyy"
   },

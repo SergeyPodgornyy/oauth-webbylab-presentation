@@ -1,4 +1,4 @@
-# OAuth and why you should to use it?
+# OAuth and why you should use it?
 
 Online preview you can find [here](https://sergeypodgornyy.github.io/oauth-webbylab-presentation/)
 
